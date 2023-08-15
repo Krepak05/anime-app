@@ -1,0 +1,59 @@
+.bottomNavBar{
+    display: flex;
+    align-items: center;
+
+    .navBar{
+        display: flex;
+        justify-content: center;
+        
+        a{
+            font-size: 2.5rem;
+            font-family: 'Trebuchet MS';
+            font-weight: bold;
+            color: rgb(255, 255, 255);;
+            text-decoration:none;
+            padding: 10px 0;
+            zoom: 80%;
+            transition: 0.2s;
+            margin: 5px;
+
+            &:hover{
+                color: grey;
+                padding: 10px;
+            }
+        }
+    }
+
+    .logo{
+        height: 70px;
+        display: flex;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        zoom: 75%;
+    
+    
+        img{
+            height: 50px;
+            margin: 0 10px ;
+            border: 2px solid black;
+            border-radius: 100%;
+            background-color: black;
+        }
+        
+        p{
+            font-size: 2.5rem;
+            font-family: 'Trebuchet MS';
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+    
+            span{
+                font-family: 'Trebuchet MS';
+                color: rgb(116, 194, 133);
+                font-weight: bold;
+            }
+        }
+    }
+}
