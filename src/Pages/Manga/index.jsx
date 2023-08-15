@@ -19,7 +19,7 @@ function MangaPage() {
   useEffect(() => {
     const fetchMangaByCategory = async () => {
       try {
-        setIsLoading(true); // Set loading state when fetching data
+        setIsLoading(true);
 
         const categoryToFetch = selectedCategory || defaultCategory;
         const response = await axios.get(
