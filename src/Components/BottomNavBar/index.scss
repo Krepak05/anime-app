@@ -1,6 +1,8 @@
 .bottomNavBar{
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: rgb(76, 87, 76);
 
     .navBar{
         display: flex;
@@ -16,6 +18,8 @@
             zoom: 80%;
             transition: 0.2s;
             margin: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
 
             &:hover{
                 color: grey;
@@ -31,7 +35,6 @@
         position: sticky;
         top: 0;
         zoom: 75%;
-    
     
         img{
             height: 50px;

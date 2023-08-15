@@ -10,7 +10,6 @@ import MangaPage from './Pages/Manga'
 import SideBar from './Components/Sidebar'
 import BottomNavBar from './Components/BottomNavBar'
 function App() {
-
   return (
     <>
     <Header />
@@ -24,15 +23,13 @@ function App() {
             <Route path='/manga' element={<MangaPage/>}/>
             <Route path='/favorites' element={<FavoritesPage/>}/>
             <Route path='/about-us' element={<AboutUsPage/>}/>
-            </Routes>
+          </Routes>
             <BottomNavBar />
           <Footer/>
         </div>      
       </div>
     </div>
     </>
-   
-   
   )
 }
 
