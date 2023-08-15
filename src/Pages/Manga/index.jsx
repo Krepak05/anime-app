@@ -4,7 +4,7 @@ import "./index.scss";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-function MangaPage() {
+const MangaPage = () => {
   const [mangaList, setMangaList] = useState([]);
   const [offset, setOffset] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -16,35 +16,35 @@ function MangaPage() {
   const limit = 10;
   const threshold = 200;
 
+  const fetchMangaByCategory = async () => {
+    try {
+      setIsLoading(true);
+
+      const categoryToFetch = selectedCategory || defaultCategory;
+      const response = await axios.get(
+        `https://kitsu.io/api/edge/manga?filter[categories]=${categoryToFetch}&sort=popularityRank&page[offset]=${offset}`
+      );
+
+      const filteredMangaList = searchInput
+        ? response.data.data.filter((manga) =>
+            manga.attributes.canonicalTitle
+              .toLowerCase()
+              .startsWith(searchInput.toLowerCase())
+          )
+        : response.data.data;
+
+      const newMangaList = filteredMangaList.filter(
+        (manga) => !uniqueMangaIds.has(manga.id)
+      );
+      setMangaList((prevMangaList) => [...prevMangaList, ...newMangaList]);
+      newMangaList.forEach((manga) => uniqueMangaIds.add(manga.id));
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching manga:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchMangaByCategory = async () => {
-      try {
-        setIsLoading(true);
-
-        const categoryToFetch = selectedCategory || defaultCategory;
-        const response = await axios.get(
-          `https://kitsu.io/api/edge/manga?filter[categories]=${categoryToFetch}&sort=popularityRank&page[offset]=${offset}`
-        );
-
-        const filteredMangaList = searchInput
-          ? response.data.data.filter((manga) =>
-              manga.attributes.canonicalTitle
-                .toLowerCase()
-                .startsWith(searchInput.toLowerCase())
-            )
-          : response.data.data;
-
-        const newMangaList = filteredMangaList.filter(
-          (manga) => !uniqueMangaIds.has(manga.id)
-        );
-        setMangaList((prevMangaList) => [...prevMangaList, ...newMangaList]);
-        newMangaList.forEach((manga) => uniqueMangaIds.add(manga.id));
-        setIsLoading(false); // Content fetched, loading is done
-      } catch (error) {
-        console.error("Error fetching manga:", error);
-      }
-    };
-
     fetchMangaByCategory();
   }, [selectedCategory, offset, searchInput, uniqueMangaIds]);
 
@@ -139,6 +139,6 @@ function MangaPage() {
       </div>
     </>
   );
-}
+};
 
 export default MangaPage;
