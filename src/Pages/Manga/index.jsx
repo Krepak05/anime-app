@@ -10,7 +10,7 @@ function MangaPage() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [uniqueMangaIds, setUniqueMangaIds] = useState(new Set());
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
   const defaultCategory = "action";
 
   const limit = 10;
