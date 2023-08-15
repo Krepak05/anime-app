@@ -1,0 +1,33 @@
+.floating-arrow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 1000;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .arrow-container {
+    width: 40px;
+    height: 40px;
+    background-color: lightcoral;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 14px solid white;
+    }
+  }
+}
